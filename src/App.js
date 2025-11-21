@@ -10,20 +10,16 @@ export default function App() {
     return Number.isFinite(n) ? n : null;
   };
 
-  const doOperation = (op) => {
-    const n = readNumber();
-    if (n === null) return;
-
-    setResult((prev) => {
-      switch (op) {
-        case "add": return prev + n;
-        case "subtract": return prev - n;
-        case "multiply": return prev * n;
-        case "divide": return n === 0 ? prev : prev / n;
-        default: return prev;
-      }
-    });
-  };
+  setResult(prev => {
+    switch(op){
+      case "add": return prev + n;
+      case "subtract": return prev - n;
+      case "multiply": return prev * n;
+      case "divide": return n === 0 ? prev : prev / n;
+      default: return prev;
+    }
+  });
+  
 
   return (
     <div className="App">
