@@ -10,16 +10,25 @@ export default function App() {
     return Number.isFinite(n) ? n : null;
   };
 
-  setResult(prev => {
-    switch(op){
-      case "add": return prev + n;
-      case "subtract": return prev - n;
-      case "multiply": return prev * n;
-      case "divide": return n === 0 ? prev : prev / n;
-      default: return prev;
-    }
-  });
-  
+  const doOperation = (op) => {
+    const n = readNumber();
+    if (n === null) return;
+
+    setResult((prev) => {
+      switch (op) {
+        case "add":
+          return prev + n;
+        case "subtract":
+          return prev - n;
+        case "multiply":
+          return prev * n;
+        case "divide":
+          return n === 0 ? prev : prev / n; // 0-val osztás védelem
+        default:
+          return prev;
+      }
+    });
+  };
 
   return (
     <div className="App">
@@ -39,8 +48,12 @@ export default function App() {
         <button onClick={() => doOperation("multiply")}>multiply</button>
         <button onClick={() => doOperation("divide")}>divide</button>
 
-        <button className="reset" onClick={() => setInput("")}>reset input</button>
-        <button className="reset" onClick={() => setResult(0)}>reset result</button>
+        <button className="reset" onClick={() => setInput("")}>
+          reset input
+        </button>
+        <button className="reset" onClick={() => setResult(0)}>
+          reset result
+        </button>
       </div>
     </div>
   );
