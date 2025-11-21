@@ -16,16 +16,11 @@ export default function App() {
 
     setResult((prev) => {
       switch (op) {
-        case "add":
-          return prev + n;
-        case "subtract":
-          return prev - n;
-        case "multiply":
-          return prev * n;
-        case "divide":
-          return n === 0 ? prev : prev / n; // védelem 0-val osztásra
-        default:
-          return prev;
+        case "add": return prev + n;
+        case "subtract": return prev - n;
+        case "multiply": return prev * n;
+        case "divide": return n === 0 ? prev : prev / n;
+        default: return prev;
       }
     });
   };
@@ -33,7 +28,6 @@ export default function App() {
   return (
     <div className="App">
       <h1>Simplest Working Calculator</h1>
-
       <p className="result">{result}</p>
 
       <input
@@ -49,12 +43,8 @@ export default function App() {
         <button onClick={() => doOperation("multiply")}>multiply</button>
         <button onClick={() => doOperation("divide")}>divide</button>
 
-        <button className="reset" onClick={() => setInput("")}>
-          reset input
-        </button>
-        <button className="reset" onClick={() => setResult(0)}>
-          reset result
-        </button>
+        <button className="reset" onClick={() => setInput("")}>reset input</button>
+        <button className="reset" onClick={() => setResult(0)}>reset result</button>
       </div>
     </div>
   );
